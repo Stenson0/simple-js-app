@@ -1,0 +1,30 @@
+body {
+    background-color: #ffcb05;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.pokemon-button {
+    background-color: #3466af;
+    border-color: #1d2c5e;
+    color: white;
+    padding: 20px 50px;
+    width: 200px;
+    height: 75px;
+    text-decoration: underline;
+    font-size: 19px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.pokemon-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
