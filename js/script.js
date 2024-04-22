@@ -35,8 +35,6 @@ let pokemonRepository = (function () {
     };
 })();
 
-console.log(pokemonRepository.getAll());
-
 pokemonRepository.getAll().forEach(pokemon => {
     pokemonRepository.addListItem(pokemon);
 });
