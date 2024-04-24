@@ -17,8 +17,16 @@ let pokemonRepository = (function () {
         pokemonButton.classList.add('pokemon-button');
         pokemonListItem.appendChild(pokemonButton);
         pokemonList.appendChild(pokemonListItem);
+
+        pokemonButton.addEventListener('click', function(event) {
+            showDetails(pokemon);
+        });
     }
-    
+
+    function showDetails(pokemon) {
+        console.log(pokemon);
+    }
+
     function getAll() {
         return pokemonList;
     }
@@ -31,7 +39,7 @@ let pokemonRepository = (function () {
         add: add,
         addListItem: addListItem,
         getAll: getAll,
-        getPokemonByName: getPokemonByName
+        getPokemonByName: getPokemonByName,
     };
 })();
 
