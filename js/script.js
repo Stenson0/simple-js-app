@@ -57,12 +57,59 @@ let pokemonRepository = (function () {
         });
     }
 
-    function showDetails(pokemon) {
-        pokemonRepository.loadDetails(pokemon).then(function () {
-            console.log(pokemon);
-        });
-    }
+
+    function showModal(title, types, text, imageUrl) {
+      let modalContainer = document.querySelector('#modal-container');
+      modalContainer.innerHTML = '';
+  
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+  
+      let closeButtonElement = document.createElement('button');
+      closeButtonElement.classList.add('modal-close');
+      closeButtonElement.innerText = 'Close';
+      closeButtonElement.addEventListener('click', hideModal);
+  
+      let titleElement = document.createElement('h1');
+      titleElement.innerText = title;
+
+      let typesElement = document.createElement('p');
+      typesElement.innerText = 'Types: ' + types.map(t => t.type.name).join(', ');
+  
+      let contentElement = document.createElement('p');
+      contentElement.innerText = text;
+
+      let imageElement = document.createElement('img');
+      imageElement.src = imageUrl;
       
+      modal.appendChild(closeButtonElement);
+      modal.appendChild(titleElement);
+      modal.appendChild(typesElement);
+      modal.appendChild(contentElement);
+      modal.appendChild(imageElement);
+      modalContainer.appendChild(modal);
+  
+      modalContainer.classList.add('is-visible');
+  }
+  
+  function hideModal() {
+      let modalContainer = document.querySelector('#modal-container');
+      modalContainer.classList.remove('is-visible');
+  }
+  
+  window.addEventListener('keydown', (e) => {
+      let modalContainer = document.querySelector('#modal-container');
+      if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+          hideModal();
+      }
+  });
+  
+  function showDetails(pokemon) {
+      pokemonRepository.loadDetails(pokemon).then(function () {
+          showModal(pokemon.name, pokemon.types, 'Height: ' + pokemon.height, pokemon.imageUrl);
+      });
+  }
+
     return {
         add: add,
         addListItem: addListItem,
