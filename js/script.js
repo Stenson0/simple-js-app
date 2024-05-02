@@ -103,6 +103,13 @@ let pokemonRepository = (function () {
           hideModal();
       }
   });
+
+  let modalContainer = document.querySelector('#modal-container');
+  modalContainer.addEventListener('click', (e) => {
+    if (e.target === modalContainer) {
+        hideModal();
+    }
+  });
   
   function showDetails(pokemon) {
       pokemonRepository.loadDetails(pokemon).then(function () {
